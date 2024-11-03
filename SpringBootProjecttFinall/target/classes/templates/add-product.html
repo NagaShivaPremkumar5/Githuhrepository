@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Add Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Styles for Colorful Form -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        .form-title {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .form-label {
+            color: #343a40;
+        }
+        .form-control, .form-select {
+            background-color: #f7f9fc;
+            border: 1px solid #ced4da;
+        }
+        .btn {
+            border-radius: 25px;
+            padding: 10px 20px;
+        }
+        .error {
+            color: red;
+            font-size: 0.875em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container" th:fragment="content">
+    <h2 class="form-title text-center mb-4">Add New Product</h2>
+    
+    <form th:action="@{/saveProduct}" th:object="${productModel}" method="post" enctype="multipart/form-data">
+        
+        <!-- Product Name -->
+        <div class="mb-3">
+            <label for="proName" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="proName" th:field="*{proName}" placeholder="Enter product name">
+            <div class="error" th:if="${#fields.hasErrors('proName')}" th:errors="*{proName}">Product name is invalid</div>
+        </div>
+        
+        <!-- Product Price -->
+        <div class="mb-3">
+            <label for="proPrice" class="form-label">Product Price</label>
+            <input type="number" class="form-control" id="proPrice" th:field="*{proPrice}" placeholder="Enter product price">
+            <div class="error" th:if="${#fields.hasErrors('proPrice')}" th:errors="*{proPrice}">Product price is invalid</div>
+        </div>
+        
+        <!-- Product Brand -->
+        <div class="mb-3">
+            <label for="proBrand" class="form-label">Product Brand</label>
+            <input type="text" class="form-control" id="proBrand" th:field="*{proBrand}" placeholder="Enter product brand">
+            <div class="error" th:if="${#fields.hasErrors('proBrand')}" th:errors="*{proBrand}">Product brand is invalid</div>
+        </div>
+        
+        <!-- Product Description -->
+        <div class="mb-3">
+            <label for="proDescription" class="form-label">Product Description</label>
+            <textarea class="form-control" id="proDescription" th:field="*{proDescription}" rows="3" placeholder="Enter product description"></textarea>
+            <div class="error" th:if="${#fields.hasErrors('proDescription')}" th:errors="*{proDescription}">Product description is invalid</div>
+        </div>
+        
+        <!-- Product Category Dropdown -->
+        <div class="mb-3">
+            <label for="proCategory" class="form-label">Product Category</label>
+            <select class="form-select" id="proCategory" th:field="*{proCategory}">
+                <option value="" disabled selected>Select Category</option>
+                <option value="Mobiles">Mobiles</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Wearables">Wearables</option>
+            </select>
+            <div class="error" th:if="${#fields.hasErrors('proCategory')}" th:errors="*{proCategory}">Product category is invalid</div>
+        </div>
+        
+        <!-- Product Image Upload -->
+        <div class="mb-3">
+            <label for="proImage" class="form-label">Product Image</label>
+            <input type="file" class="form-control" id="proImage" name="productImage">
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Save Product</button>
+        </div>
+        
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff6f61, #ffcc00, #33ccff);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #333;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5" th:fragment="content">
+    <h1>About MyStore</h1>
+
+    <!-- Store Overview -->
+    <div class="mb-4">
+        <h2>Who We Are</h2>
+        <p>
+            MyStore is your ultimate destination for high-quality products, offering an extensive range of categories from electronics, fashion, and home appliances to beauty products. Our store is dedicated to bringing the best shopping experience to customers by offering the latest products from trusted brands.
+        </p>
+    </div>
+
+    <!-- Product Offering -->
+    <div class="mb-4">
+        <h2>What We Offer</h2>
+        <p>
+            At MyStore, we provide a diverse selection of products across multiple categories to meet the needs of a wide variety of customers. Whether you're looking for the latest tech gadgets, trendy fashion items, or everyday home essentials, we've got you covered.
+        </p>
+        <ul>
+            <li>Electronics: Smartphones, Laptops, Smart Home Devices</li>
+            <li>Fashion: Clothing, Footwear, Accessories</li>
+            <li>Home Appliances: Kitchen Appliances, Air Conditioners, Washing Machines</li>
+            <li>Beauty & Personal Care: Skincare, Makeup, Hair Care</li>
+        </ul>
+    </div>
+
+    <!-- Store's Mission -->
+    <div class="mb-4">
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to offer high-quality products at competitive prices while ensuring the best customer service. We strive to be a trusted destination where customers can find all their needs under one roof, with a focus on providing an exceptional shopping experience both online and offline.
+        </p>
+    </div>
+
+    <!-- Customer Satisfaction -->
+    <div class="mb-4">
+        <h2>Customer-Centric Approach</h2>
+        <p>
+            We believe in placing our customers first. From personalized shopping recommendations to fast delivery and easy returns, our store is designed to make your experience as seamless as possible. Your satisfaction is our top priority, and we are committed to continually improving to meet your expectations.
+        </p>
+    </div>
+
+    <!-- Sustainability Efforts -->
+    <div class="mb-4">
+        <h2>Our Commitment to Sustainability</h2>
+        <p>
+            At MyStore, we are committed to reducing our environmental footprint. We work with eco-conscious brands and offer a range of sustainable products. From energy-efficient appliances to ethically sourced fashion items, we are doing our part to create a greener future.
+        </p>
+    </div>
+
+    <!-- Goals for the Future -->
+    <div class="mb-4">
+        <h2>Our Vision for the Future</h2>
+        <p>
+            We aim to expand our offerings and services, making MyStore a leading name in the retail space. Our goal is to innovate and adapt to the changing needs of our customers while keeping up with the latest trends and technology. We envision a future where every customer can find exactly what they need at MyStore with a few clicks or visits.
+        </p>
+    </div>
+
+    <!-- Link Back to Product List -->
+    <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+</div>
+
+</body>
+</html>
