@@ -240,14 +240,3 @@ button:hover {
   margin: 5px 0;
 }
 
-/* background image */
-body {
-  background-image: url('.jpg'); /* Update the path as necessary */
-  background-size: cover; /* This makes the image cover the entire background */
-  background-position: center; /* This centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  height: 100vh; /* Ensures the body takes up the full viewport height */
-  margin: 0; /* Removes default margin */
-  color: white; /* Change text color for better visibility */
-  text-align: center; /* Centers text in the body */
-}

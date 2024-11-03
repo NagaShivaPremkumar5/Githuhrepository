@@ -10,25 +10,39 @@ import GoogleLoginComponent from './GoogleLoginComponent';
 import SignOutComponent from './SignOutComponent';
 import store from './store.js';
 
-function RootComponent() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false); // Track login status
+function LoginPopup({ onFacebookLogin, onGoogleLogin, onClose }) {
+    return (
+        <div className="popup">
+            <button onClick={onClose} className="close-popup">Close</button>
+            <h3>Login</h3>
+            <FacebookLoginComponent onLogin={onFacebookLogin} />
+            <GoogleOAuthProvider clientId="186063314066-supj9fb9bg0bqv76lnm61efu13o1dnip.apps.googleusercontent.com">
+                <GoogleLoginComponent onLoginSuccess={onGoogleLogin} />
+            </GoogleOAuthProvider>
+        </div>
+    );
+}
 
-    // Callback function for Facebook login status
+function RootComponent() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [showLoginPopup, setShowLoginPopup] = useState(false);
+
     const handleFacebookLogin = (response) => {
         if (response.status === 'connected') {
-            setIsAuthenticated(true); // Set authenticated to true on successful login
+            setIsAuthenticated(true);
+            setShowLoginPopup(false); // Close popup on successful login
         }
     };
 
-    // Callback function for Google login status
     const handleGoogleLogin = (response) => {
-        if (response.credential) { // Check if response contains a credential
-            setIsAuthenticated(true); // Set authenticated to true on successful Google login
+        if (response.credential) {
+            setIsAuthenticated(true);
+            setShowLoginPopup(false); // Close popup on successful login
         }
     };
 
     const handleSignOut = () => {
-        setIsAuthenticated(false); // Reset authentication state
+        setIsAuthenticated(false);
     };
 
     return (
@@ -36,19 +50,20 @@ function RootComponent() {
             <Provider store={store}>
                 {isAuthenticated ? (
                     <div>
-                        <App /> {/* Show App only if user is authenticated */}
-                        <SignOutComponent onSignOut={handleSignOut} /> {/* Sign Out button */}
+                        <App />
+                        <SignOutComponent onSignOut={handleSignOut} />
                     </div>
                 ) : (
-                    <>  <img src="src/Images/facebook.png" alt="Description of my image" />
-                        <FacebookLoginComponent onLogin={handleFacebookLogin} />
-
-                        
-                        <GoogleOAuthProvider clientId="186063314066-supj9fb9bg0bqv76lnm61efu13o1dnip.apps.googleusercontent.com">
-                            <GoogleLoginComponent onLoginSuccess={handleGoogleLogin} />
-                        </GoogleOAuthProvider>
-                        <img src="src/Images/download.png" alt="Description of my image" />
-                    </>
+                    <div>
+                        <button onClick={() => setShowLoginPopup(true)}>Login</button>
+                        {showLoginPopup && (
+                            <LoginPopup 
+                                onFacebookLogin={handleFacebookLogin} 
+                                onGoogleLogin={handleGoogleLogin} 
+                                onClose={() => setShowLoginPopup(false)}
+                            />
+                        )}
+                    </div>
                 )}
             </Provider>
         </StrictMode>

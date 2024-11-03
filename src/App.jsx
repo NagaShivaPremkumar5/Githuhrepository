@@ -13,8 +13,8 @@ import { useSelector } from "react-redux";
 import { FaCarrot, FaDrumstickBite, FaHistory, FaHome, FaInfoCircle, FaPhone, FaShoppingCart } from "react-icons/fa";
 import Apps from "./Apps";
 import StudentMarks from "./StudentMarks";
-import SignOutComponent from "./SignOutComponent";
-import MyComponent from "../public/MyComponent";
+import GitHubLoginComponent from "./GithubLoginComponent";
+
 
 // import { GoogleOAuthProvider } from "@react-oauth/google";
 // import FacebookLoginComponent from "./FacebookLoginComponent";
@@ -22,6 +22,7 @@ import MyComponent from "../public/MyComponent";
 
 
 function App(){
+  
 
     const cart = useSelector((state) => state.cart);
 
@@ -33,6 +34,7 @@ function App(){
       
     <BrowserRouter>
     <nav>
+    {/* <GitHubLoginComponent /> */}
     <Link to="/home"><FaHome /> Home</Link>
             <Link to="/veg"><FaCarrot /> Veg</Link>
             <Link to="/nonveg"><FaDrumstickBite /> NonVeg</Link>
